@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Text.RegularExpressions;
@@ -9,10 +10,14 @@ namespace Blood_Bank_Management
     public partial class UserRegistration : Form
     {
         private DbConnection dbConnection;
+        private UserController userController;
+        private BankController bankController;
         public UserRegistration()
         {
             InitializeComponent();
             dbConnection = new DbConnection();
+            userController = new UserController();
+            bankController = new BankController();
         }
 
         private void UserRegistration_Load(object sender, EventArgs e)
@@ -22,18 +27,11 @@ namespace Blood_Bank_Management
 
         private void PopulateBloodGroup()
         {
-            dbConnection.Command.CommandText = "Select * From BloodGroup";
-            dbConnection.Connection.Open();
-            SqlDataAdapter dataAdapter = new SqlDataAdapter(dbConnection.Command);
-            dbConnection.Connection.Close();
+            List<String> bloodGroups = bankController.GetBloodGroups();
             
-            DataSet dataSet = new DataSet();
-            dataAdapter.Fill(dataSet, "BloodGroup");
-            DataTable productTable = dataSet.Tables["BloodGroup"];
-            
-            foreach (DataRow dr in productTable.Rows)
+            foreach (String bloodGroup in bloodGroups)
             {
-                userBloodGroup.Items.Add(dr["bgName"].ToString());
+                userBloodGroup.Items.Add(bloodGroup);
             }
 
             userBloodGroup.SelectedIndex = 0;
@@ -44,8 +42,8 @@ namespace Blood_Bank_Management
             bool validate = true;
             
             string userName = userFullName.Text;
-            string dob = userDateOfBirth.Value.ToString("dd/MM/yyyy");
-            string bloodGroup = Convert.ToString(userBloodGroup.SelectedIndex);
+            DateTime dob = userDateOfBirth.Value;
+            int bloodGroup = userBloodGroup.SelectedIndex;
             int weight = Convert.ToInt32(userWeight.Text);
             string mobileNumber = userMobileNumber.Text;
             string address = userAddress.Text;
@@ -64,17 +62,34 @@ namespace Blood_Bank_Management
             if (address.Length <= 0)
                 validate = false;
 
-            if (validate) {
-
-                dbConnection.Command.CommandText = "";
-
-                dbConnection.Connection.Open();
-                dbConnection.Command.ExecuteNonQuery();
-                dbConnection.Connection.Close();
-            } else
+            if (validate)
             {
-                MessageBox.Show(String.Format("Name should not be empty\nWeight should be >= 40\nMobile Number should be all numeric\nAddress should not empty!"), "Error");
+                if (userController.InsertDonorToDb(userName, dob, bloodGroup, weight, mobileNumber, address))
+                {
+                    CleanTextFields();
+                    MessageBox.Show("Donor successfully add!", "Success");
+                }
+                else
+                {
+                    MessageBox.Show("Something went wrong!", "Failed");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Name should not be empty\nWeight should be >= 40\nMobile Number should be all numeric\nAddress should not empty!", "Error");
             }
         }
+
+        private void CleanTextFields()
+        {
+            userFullName.Text = "";
+            userDateOfBirth.Value = DateTime.Today;
+            userBloodGroup.SelectedIndex = 0;
+            userWeight.Text = "0";
+            userMobileNumber.Text = "";
+            userAddress.Text = "";
+        }
+
+        
     }
 }
