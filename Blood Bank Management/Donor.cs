@@ -4,77 +4,44 @@ namespace Blood_Bank_Management
 {
     class Donor
     {
-        private int donorId;
-        private string dob;
-        private int bloodGroup;
-        private int weight;
-        private string mobileNumber;
-        private string address;
-        
-        
-        private DateTime lastDonationDateTime;
-        private DateTime lastRecipentDateTime;
-
         public Donor(int donorId, string dob, int bloodGroup, int weight, string mobileNumber, string address,
             DateTime lastDonationDateTime, DateTime lastRecipentDateTime)
         {
-            this.donorId = donorId;
-            this.dob = dob;
-            this.bloodGroup = bloodGroup;
-            this.weight = weight;
-            this.mobileNumber = mobileNumber;
-            this.address = address;
-            this.lastDonationDateTime = lastDonationDateTime;
-            this.lastRecipentDateTime = lastRecipentDateTime;
+            DonorId = donorId;
+            Dob = dob;
+            BloodGroup = bloodGroup;
+            Weight = weight;
+            MobileNumber = mobileNumber;
+            Address = address;
+            LastDonationDateTime = lastDonationDateTime;
+            LastRecipentDateTime = lastRecipentDateTime;
         }
 
-
-        public int DonorId
+        public Donor(int donorId, string dob, int bloodGroup, int weight, string mobileNumber, string address)
         {
-            get => donorId;
-            set => donorId = value;
+            DonorId = donorId;
+            Dob = dob;
+            BloodGroup = bloodGroup;
+            Weight = weight;
+            MobileNumber = mobileNumber;
+            Address = address;
         }
 
-        public string Dob
-        {
-            get => dob;
-            set => dob = value;
-        }
 
-        public int BloodGroup
-        {
-            get => bloodGroup;
-            set => bloodGroup = value;
-        }
+        public int DonorId { get; set; }
 
-        public int Weight
-        {
-            get => weight;
-            set => weight = value;
-        }
+        public string Dob { get; set; }
 
-        public string MobileNumber
-        {
-            get => mobileNumber;
-            set => mobileNumber = value;
-        }
+        public int BloodGroup { get; set; }
 
-        public string Address
-        {
-            get => address;
-            set => address = value;
-        }
+        public int Weight { get; set; }
 
-        public DateTime LastDonationDateTime
-        {
-            get => lastDonationDateTime;
-            set => lastDonationDateTime = value;
-        }
+        public string MobileNumber { get; set; }
 
-        public DateTime LastRecipentDateTime
-        {
-            get => lastRecipentDateTime;
-            set => lastRecipentDateTime = value;
-        }
+        public string Address { get; set; }
+
+        public DateTime LastDonationDateTime { get; set; }
+
+        public DateTime LastRecipentDateTime { get; set; }
     }
 }
