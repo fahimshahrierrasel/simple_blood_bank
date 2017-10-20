@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Blood_Bank_Management
@@ -16,7 +13,7 @@ namespace Blood_Bank_Management
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new UserRegistration());
+            Application.Run(new MainWindow());
         }
     }
 }
