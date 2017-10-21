@@ -26,5 +26,11 @@ namespace Blood_Bank_Management
             var allUserList = new AllUserList();
             allUserList.ShowDialog();
         }
+
+        private void DonationButton_Click(object sender, EventArgs e)
+        {
+            var donationForm = new Donation();
+            donationForm.ShowDialog();
+        }
     }
 }

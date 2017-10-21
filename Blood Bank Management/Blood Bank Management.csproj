@@ -57,6 +57,13 @@
     </Compile>
     <Compile Include="BankController.cs" />
     <Compile Include="DbConnection.cs" />
+    <Compile Include="Donation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Donation.Designer.cs">
+      <DependentUpon>Donation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DonationController.cs" />
     <Compile Include="Donor.cs" />
     <Compile Include="MainWindow.cs">
       <SubType>Form</SubType>
@@ -75,6 +82,9 @@
     </Compile>
     <EmbeddedResource Include="AllUserList.resx">
       <DependentUpon>AllUserList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Donation.resx">
+      <DependentUpon>Donation.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainWindow.resx">
       <DependentUpon>MainWindow.cs</DependentUpon>
