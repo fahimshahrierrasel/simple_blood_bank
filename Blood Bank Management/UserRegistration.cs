@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
-using System.Data.SqlClient;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
@@ -9,13 +7,11 @@ namespace Blood_Bank_Management
 {
     public partial class UserRegistration : Form
     {
-        private DbConnection dbConnection;
         private UserController userController;
         private BankController bankController;
         public UserRegistration()
         {
             InitializeComponent();
-            dbConnection = new DbConnection();
             userController = new UserController();
             bankController = new BankController();
         }
@@ -85,11 +81,14 @@ namespace Blood_Bank_Management
             userFullName.Text = "";
             userDateOfBirth.Value = DateTime.Today;
             userBloodGroup.SelectedIndex = 0;
-            userWeight.Text = "0";
+            userWeight.Text = @"0";
             userMobileNumber.Text = "";
             userAddress.Text = "";
         }
 
-        
+        private void RegistrationCancelButton_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

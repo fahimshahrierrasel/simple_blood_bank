@@ -42,7 +42,7 @@
             this.userAddress = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.RegistrationCancelButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.userWeight)).BeginInit();
             this.SuspendLayout();
             // 
@@ -206,24 +206,25 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.RegisterButtonClickListener);
             // 
-            // button2
+            // RegistrationCancelButton
             // 
-            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button2.AutoSize = true;
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(367, 354);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 30);
-            this.button2.TabIndex = 16;
-            this.button2.Text = "Cancel";
-            this.button2.UseVisualStyleBackColor = true;
+            this.RegistrationCancelButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.RegistrationCancelButton.AutoSize = true;
+            this.RegistrationCancelButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.RegistrationCancelButton.Location = new System.Drawing.Point(367, 354);
+            this.RegistrationCancelButton.Name = "RegistrationCancelButton";
+            this.RegistrationCancelButton.Size = new System.Drawing.Size(75, 30);
+            this.RegistrationCancelButton.TabIndex = 16;
+            this.RegistrationCancelButton.Text = "Cancel";
+            this.RegistrationCancelButton.UseVisualStyleBackColor = true;
+            this.RegistrationCancelButton.Click += new System.EventHandler(this.RegistrationCancelButton_Click);
             // 
             // UserRegistration
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(539, 396);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.RegistrationCancelButton);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.userAddress);
             this.Controls.Add(this.label7);
@@ -264,6 +265,6 @@
         private System.Windows.Forms.TextBox userAddress;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button RegistrationCancelButton;
     }
 }

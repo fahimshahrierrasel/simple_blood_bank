@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainWindow));
             this.DonorRegisterButton = new System.Windows.Forms.Button();
             this.ShowAllDonorButton = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
@@ -158,6 +159,8 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
+            this.BackgroundImage = global::Blood_Bank_Management.Properties.Resources.blood_donation;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(584, 361);
             this.Controls.Add(this.linkLabel2);
             this.Controls.Add(this.linkLabel1);
@@ -169,6 +172,8 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.ShowAllDonorButton);
             this.Controls.Add(this.DonorRegisterButton);
+            this.DoubleBuffered = true;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(600, 400);
             this.Name = "MainWindow";
             this.Text = "Simple Blood Bank";
