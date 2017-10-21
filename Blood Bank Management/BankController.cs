@@ -26,11 +26,11 @@ namespace Blood_Bank_Management
 
             DataSet dataSet = new DataSet();
             dataAdapter.Fill(dataSet, "BloodGroup");
-            DataTable productTable = dataSet.Tables["BloodGroup"];
+            DataTable bloodGroupTable = dataSet.Tables["BloodGroup"];
 
             List<String> bloodGroups = new List<string>();
             
-            foreach (DataRow dr in productTable.Rows)
+            foreach (DataRow dr in bloodGroupTable.Rows)
             {
                 bloodGroups.Add(dr["bgName"].ToString());
             }

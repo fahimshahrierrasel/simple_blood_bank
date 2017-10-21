@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AllUserList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AllUserList.Designer.cs">
+      <DependentUpon>AllUserList.cs</DependentUpon>
+    </Compile>
     <Compile Include="BankController.cs" />
     <Compile Include="DbConnection.cs" />
     <Compile Include="Donor.cs" />
@@ -64,6 +70,9 @@
     <Compile Include="UserRegistration.Designer.cs">
       <DependentUpon>UserRegistration.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="AllUserList.resx">
+      <DependentUpon>AllUserList.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainWindow.resx">
       <DependentUpon>MainWindow.cs</DependentUpon>
     </EmbeddedResource>

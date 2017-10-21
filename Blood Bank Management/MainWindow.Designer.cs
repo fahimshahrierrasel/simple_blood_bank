@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.DonorRegisterButton = new System.Windows.Forms.Button();
-            this.showAllDonorButton = new System.Windows.Forms.Button();
+            this.ShowAllDonorButton = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
@@ -52,17 +52,18 @@
             this.DonorRegisterButton.UseVisualStyleBackColor = true;
             this.DonorRegisterButton.Click += new System.EventHandler(this.DonorRegisterButton_Click);
             // 
-            // showAllDonorButton
+            // ShowAllDonorButton
             // 
-            this.showAllDonorButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.showAllDonorButton.AutoSize = true;
-            this.showAllDonorButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.showAllDonorButton.Location = new System.Drawing.Point(419, 82);
-            this.showAllDonorButton.Name = "showAllDonorButton";
-            this.showAllDonorButton.Size = new System.Drawing.Size(125, 35);
-            this.showAllDonorButton.TabIndex = 1;
-            this.showAllDonorButton.Text = "Show All User";
-            this.showAllDonorButton.UseVisualStyleBackColor = true;
+            this.ShowAllDonorButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.ShowAllDonorButton.AutoSize = true;
+            this.ShowAllDonorButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ShowAllDonorButton.Location = new System.Drawing.Point(419, 82);
+            this.ShowAllDonorButton.Name = "ShowAllDonorButton";
+            this.ShowAllDonorButton.Size = new System.Drawing.Size(125, 35);
+            this.ShowAllDonorButton.TabIndex = 1;
+            this.ShowAllDonorButton.Text = "Show All User";
+            this.ShowAllDonorButton.UseVisualStyleBackColor = true;
+            this.ShowAllDonorButton.Click += new System.EventHandler(this.ShowAllDonorButton_Click);
             // 
             // button1
             // 
@@ -166,7 +167,7 @@
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.showAllDonorButton);
+            this.Controls.Add(this.ShowAllDonorButton);
             this.Controls.Add(this.DonorRegisterButton);
             this.MinimumSize = new System.Drawing.Size(600, 400);
             this.Name = "MainWindow";
@@ -180,7 +181,7 @@
         #endregion
 
         private System.Windows.Forms.Button DonorRegisterButton;
-        private System.Windows.Forms.Button showAllDonorButton;
+        private System.Windows.Forms.Button ShowAllDonorButton;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
