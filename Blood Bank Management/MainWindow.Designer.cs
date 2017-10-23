@@ -32,7 +32,7 @@
             this.DonorRegisterButton = new System.Windows.Forms.Button();
             this.ShowAllDonorButton = new System.Windows.Forms.Button();
             this.DonationButton = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.RecipientButton = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -77,16 +77,17 @@
             this.DonationButton.UseVisualStyleBackColor = true;
             this.DonationButton.Click += new System.EventHandler(this.DonationButton_Click);
             // 
-            // button2
+            // RecipientButton
             // 
-            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(419, 162);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(125, 35);
-            this.button2.TabIndex = 3;
-            this.button2.Text = "Recipient";
-            this.button2.UseVisualStyleBackColor = true;
+            this.RecipientButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.RecipientButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.RecipientButton.Location = new System.Drawing.Point(419, 162);
+            this.RecipientButton.Name = "RecipientButton";
+            this.RecipientButton.Size = new System.Drawing.Size(125, 35);
+            this.RecipientButton.TabIndex = 3;
+            this.RecipientButton.Text = "Recipient";
+            this.RecipientButton.UseVisualStyleBackColor = true;
+            this.RecipientButton.Click += new System.EventHandler(this.RecipientButton_Click);
             // 
             // button3
             // 
@@ -171,7 +172,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.RecipientButton);
             this.Controls.Add(this.DonationButton);
             this.Controls.Add(this.ShowAllDonorButton);
             this.Controls.Add(this.DonorRegisterButton);
@@ -191,7 +192,7 @@
         private System.Windows.Forms.Button DonorRegisterButton;
         private System.Windows.Forms.Button ShowAllDonorButton;
         private System.Windows.Forms.Button DonationButton;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button RecipientButton;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Label label1;

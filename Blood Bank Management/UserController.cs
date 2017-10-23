@@ -87,5 +87,29 @@ namespace Blood_Bank_Management
             }
             return true;
         }
+
+        public bool UpdateLastRecipientDate(int donorId, DateTime currentDate)
+        {
+            // UPDATE CustTest SET CustID = @p1 , CustName = @p2 WHERE ( CustID = @p3 AND CustName = @p4 )
+            try
+            {
+                dbConnection.Command.CommandText =
+                    "UPDATE Donor SET lastrecipientDate = @CurrDate WHERE DonorId = @DID";
+                dbConnection.Command.Parameters.Add("@CurrDate", SqlDbType.Date).Value = currentDate.Date;
+                dbConnection.Command.Parameters.Add("@DID", SqlDbType.Int).Value = donorId;
+                dbConnection.Connection.Open();
+                dbConnection.Command.ExecuteNonQuery();
+            }
+            catch (Exception exception)
+            {
+                Console.WriteLine(exception.StackTrace);
+                return false;
+            }
+            finally
+            {
+                dbConnection.Connection.Close();
+            }
+            return true;
+        }
     }
 }
