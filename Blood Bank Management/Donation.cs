@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Windows.Forms;
 
@@ -8,11 +9,15 @@ namespace Blood_Bank_Management
     {
         private UserController userController;
         private DonationController donationController;
+        private BankController bankController;
+        List<String> bloodGroups;
         public Donation()
         {
             InitializeComponent();
             userController = new UserController();
             donationController = new DonationController();
+            bankController = new BankController();
+            bloodGroups = bankController.GetBloodGroups();
         }
 
         private void Donation_Load(object sender, EventArgs e)
@@ -48,9 +53,19 @@ namespace Blood_Bank_Management
                 MobileNumberLabel.Text = userCells[5].Value.ToString();
                 PacksNumericBox.Value = 1;
                 DateLabel.Text = DateTime.Now.ToString("D");
+                BloodGroup.Text = bloodGroups[(int) userCells[3].Value];
 
-                ShowDonationForm(true);
-                ShowSearchBoxAndDataGrid(false);
+                DateTime lastDonationDate = (DateTime) userCells[7].Value;
+                
+                if ((DateTime.Now.Date - lastDonationDate.Date).TotalDays >= 90)
+                {
+                    ShowDonationForm(true);
+                    ShowSearchBoxAndDataGrid(false);
+                }
+                else
+                {
+                    MessageBox.Show(String.Format("User Last Donation Date is {0}. Which is less then 90 days from Today", lastDonationDate.ToShortDateString()), "Warning!!");
+                }
             }
         }
 
@@ -83,6 +98,8 @@ namespace Blood_Bank_Management
             PacksNumericBox.Visible = show;
             DateLabelTitle.Visible = show;
             DateLabel.Visible = show;
+            BloodGroupLabel.Visible = show;
+            BloodGroup.Visible = show;
             DonationSubmitButton.Visible = show;
         }
 
@@ -112,14 +129,22 @@ namespace Blood_Bank_Management
 
             if (donationController.InsertDonationToDb(userId, totalPack, currentDate))
             {
-                if (userController.UpdateLastDonationDate(userId, currentDate))
+                if (bankController.UpdateStorageForBloodGroup(totalPack, bloodGroups.IndexOf(BloodGroup.Text)))
                 {
-                    MessageBox.Show("Done");
+                    if (userController.UpdateLastDonationDate(userId, currentDate))
+                    {
+                        MessageBox.Show("Done");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Something went wrong to update");
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("Something wrong to update");
+                    MessageBox.Show("Something went wrong to update");
                 }
+
             }
             else
             {

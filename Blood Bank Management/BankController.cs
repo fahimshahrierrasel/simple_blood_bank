@@ -2,19 +2,16 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Blood_Bank_Management
 {
-    class BankController
+    public class BankController
     {
         private DbConnection dbConnection;
 
         public BankController()
         {
-            this.dbConnection = new DbConnection();
+            dbConnection = new DbConnection();
         }
 
         public List<String> GetBloodGroups()
@@ -36,6 +33,46 @@ namespace Blood_Bank_Management
             }
 
             return bloodGroups;
+        }
+
+        public int GetAvailablePacksForBloodGroup(int bloodGroupId)
+        {
+            dbConnection.Command.CommandText = "Select quantity From Storage Where bgid = @BID";
+            dbConnection.Command.Parameters.Add("@BID", SqlDbType.Int).Value = bloodGroupId;
+            dbConnection.Connection.Open();
+            SqlDataAdapter dataAdapter = new SqlDataAdapter(dbConnection.Command);
+            dbConnection.Connection.Close();
+            DataSet dataSet = new DataSet();
+            dataAdapter.Fill(dataSet, "Storage");
+            DataTable stroageTable = dataSet.Tables["Storage"];
+            int totalAvailablePack = Int32.Parse(stroageTable.Rows[0]["quantity"].ToString());
+            return totalAvailablePack;
+        }
+        public bool UpdateStorageForBloodGroup(int qunatity, int bloodGroupId)
+        {
+
+            int updatedQuantity = GetAvailablePacksForBloodGroup(bloodGroupId) + qunatity;
+            
+            // UPDATE CustTest SET CustID = @p1 , CustName = @p2 WHERE ( CustID = @p3 AND CustName = @p4 )
+            try
+            {
+                dbConnection.Command.CommandText =
+                    "UPDATE Storage SET quantity = @QUANTITY WHERE bgId = @BGID";
+                dbConnection.Command.Parameters.Add("@QUANTITY", SqlDbType.Int).Value = updatedQuantity;
+                dbConnection.Command.Parameters.Add("@BGID", SqlDbType.Int).Value = bloodGroupId;
+                dbConnection.Connection.Open();
+                dbConnection.Command.ExecuteNonQuery();
+            }
+            catch (Exception exception)
+            {
+                Console.WriteLine(exception.StackTrace);
+                return false;
+            }
+            finally
+            {
+                dbConnection.Connection.Close();
+            }
+            return true;
         }
     }
 }
