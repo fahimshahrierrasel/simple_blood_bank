@@ -16,7 +16,7 @@ namespace Blood_Bank_Management.Tests
         {
             // arrange
             var bankController = new BankController();
-            var sampleBloodGroup = 0;
+            var sampleBloodGroup = 2;
             // act
             var totalPack = bankController.GetAvailablePacksForBloodGroup(sampleBloodGroup);
             // assert

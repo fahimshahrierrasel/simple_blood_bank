@@ -54,17 +54,29 @@ namespace Blood_Bank_Management
                 PacksNumericBox.Value = 1;
                 DateLabel.Text = DateTime.Now.ToString("D");
                 BloodGroup.Text = bloodGroups[(int) userCells[3].Value];
-
-                DateTime lastDonationDate = (DateTime) userCells[7].Value;
                 
-                if ((DateTime.Now.Date - lastDonationDate.Date).TotalDays >= 90)
+
+                DateTime lastDonationDate;
+                double totalLeave = 0;
+                if (userCells[7].Value.ToString().Length > 0)
+                {
+                    lastDonationDate = new DateTime();
+                    totalLeave = (DateTime.Now.Date - lastDonationDate.Date).TotalDays;
+                }
+                else
+                {
+                    totalLeave = 91.0;
+                }
+                
+                
+                if (totalLeave >= 90)
                 {
                     ShowDonationForm(true);
                     ShowSearchBoxAndDataGrid(false);
                 }
                 else
                 {
-                    MessageBox.Show(String.Format("User Last Donation Date is {0}. Which is less then 90 days from Today", lastDonationDate.ToShortDateString()), "Warning!!");
+                    MessageBox.Show("User Last Donation Date  is less then 90 days from Today", "Warning!!");
                 }
             }
         }
