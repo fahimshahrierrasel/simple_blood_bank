@@ -1,10 +1,4 @@
-﻿using Blood_Bank_Management;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Blood_Bank_Management.Tests
 {
@@ -20,7 +14,21 @@ namespace Blood_Bank_Management.Tests
             // act
             var totalPack = bankController.GetAvailablePacksForBloodGroup(sampleBloodGroup);
             // assert
-            Assert.AreEqual(0, totalPack);
+            Assert.AreEqual(4, totalPack);
         }
+
+        [TestMethod()]
+        public void CanReciptBloodTest()
+        {
+            // arrange
+            var bankController = new BankController();
+            var sampleBloodGroup = 2;
+            // act
+            var status = bankController.CanReciptBlood(10, sampleBloodGroup);
+            // assert
+            Assert.AreEqual(false, status);
+        }
+        
+        
     }
 }

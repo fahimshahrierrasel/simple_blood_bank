@@ -25,5 +25,10 @@ namespace Blood_Bank_Management
             connection.ConnectionString = ConfigurationManager.ConnectionStrings["BBConnectionString"].ConnectionString;
             command.Connection = connection;
         }
+
+        public void ClearCommandText()
+        {
+            command.Parameters.Clear();
+        }
     }
 }

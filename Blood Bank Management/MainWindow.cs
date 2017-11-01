@@ -29,13 +29,13 @@ namespace Blood_Bank_Management
 
         private void DonationButton_Click(object sender, EventArgs e)
         {
-            var donationForm = new Donation();
+            var donationForm = new DonationForm();
             donationForm.ShowDialog();
         }
 
         private void RecipientButton_Click(object sender, EventArgs e)
         {
-            var recipientForm = new Recipient();
+            var recipientForm = new RecipientForm();
             recipientForm.ShowDialog();
         }
     }

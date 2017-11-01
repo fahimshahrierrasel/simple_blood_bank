@@ -5,13 +5,13 @@ using System.Windows.Forms;
 
 namespace Blood_Bank_Management
 {
-    public partial class Donation : Form
+    public partial class DonationForm : Form
     {
         private UserController userController;
         private DonationController donationController;
         private BankController bankController;
         List<String> bloodGroups;
-        public Donation()
+        public DonationForm()
         {
             InitializeComponent();
             userController = new UserController();

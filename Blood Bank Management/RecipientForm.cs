@@ -1,18 +1,23 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Windows.Forms;
 
 namespace Blood_Bank_Management
 {
-    public partial class Recipient : Form
+    public partial class RecipientForm : Form
     {
         private UserController userController;
         private RecipitionController recipitionController;
-        public Recipient()
+        private BankController bankController;
+        List<String> bloodGroups;
+        public RecipientForm()
         {
             InitializeComponent();
             userController = new UserController();
             recipitionController = new RecipitionController();
+            bankController = new BankController();
+            bloodGroups = bankController.GetBloodGroups();
         }
 
         private void Recipient_Load(object sender, EventArgs e)
@@ -47,6 +52,7 @@ namespace Blood_Bank_Management
                 NameLabel.Text = userCells[1].Value.ToString();
                 MobileNumberLabel.Text = userCells[5].Value.ToString();
                 PacksNumericBox.Value = 1;
+                BloodGroup.Text = bloodGroups[(int)userCells[3].Value];
                 DateLabel.Text = DateTime.Now.ToString("D");
 
                 ShowDonationForm(true);
@@ -83,6 +89,8 @@ namespace Blood_Bank_Management
             PacksNumericBox.Visible = show;
             DateLabelTitle.Visible = show;
             DateLabel.Visible = show;
+            BloodGroupLabel.Visible = show;
+            BloodGroup.Visible = show;
             DonationSubmitButton.Visible = show;
         }
 
@@ -109,21 +117,29 @@ namespace Blood_Bank_Management
             int userId = Convert.ToInt32(IdLabel.Text);
             int totalPack = (int)PacksNumericBox.Value;
             var currentDate = DateTime.Now;
+            int bloodGroupId = bloodGroups.IndexOf(BloodGroup.Text);
 
-            if (recipitionController.InsertRecipitionToDb(userId, totalPack, currentDate))
+            if (bankController.CanReciptBlood(totalPack, bloodGroupId))
             {
-                if (userController.UpdateLastDonationDate(userId, currentDate))
+                if (recipitionController.InsertRecipitionToDb(userId, totalPack, currentDate))
                 {
-                    MessageBox.Show("Done");
+                    if (userController.UpdateLastDonationDate(userId, currentDate))
+                    {
+                        MessageBox.Show("Done");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Something wrong to update");
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("Something wrong to update");
+                    MessageBox.Show("Recipiention is not possible");
                 }
             }
             else
             {
-                MessageBox.Show("Recipiention is not possible");
+                MessageBox.Show("Not enough stroage avilable!!");
             }
         }
     }

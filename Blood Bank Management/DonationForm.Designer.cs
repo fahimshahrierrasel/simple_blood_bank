@@ -1,6 +1,6 @@
 ﻿namespace Blood_Bank_Management
 {
-    partial class Donation
+    partial class DonationForm
     {
         /// <summary>
         /// Required designer variable.

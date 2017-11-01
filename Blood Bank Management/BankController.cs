@@ -36,10 +36,10 @@ namespace Blood_Bank_Management
             return bloodGroups;
         }
 
-        public int GetAvailablePacksForBloodGroup(int bloodGroupId)
+        public int GetAvailablePacksForBloodGroup(int bloodgId)
         {
-            dbConnection.Command.CommandText = "Select quantity From Storage Where bgid = @BID";
-            dbConnection.Command.Parameters.Add("@BID", SqlDbType.Int).Value = bloodGroupId;
+            dbConnection.Command.CommandText = "Select quantity From Storage Where bgId = @BloodID";
+            dbConnection.Command.Parameters.Add("@BloodID", SqlDbType.Int).Value = bloodgId;
             dbConnection.Connection.Open();
             SqlDataAdapter dataAdapter = new SqlDataAdapter(dbConnection.Command);
             dbConnection.Connection.Close();
@@ -47,8 +47,20 @@ namespace Blood_Bank_Management
             dataAdapter.Fill(dataSet, "Storage");
             DataTable stroageTable = dataSet.Tables["Storage"];
             int totalAvailablePack = Int32.Parse(stroageTable.Rows[0]["quantity"].ToString());
+            dbConnection.ClearCommandText();
             return totalAvailablePack;
         }
+
+        public bool CanReciptBlood(int totalPack, int bloodGroupId)
+        {
+            if (GetAvailablePacksForBloodGroup(bloodGroupId) - totalPack >= 0)
+            {
+                UpdateStorageForBloodGroup(-totalPack, bloodGroupId);
+                return true;
+            }
+            return false;
+        }
+        
         public bool UpdateStorageForBloodGroup(int qunatity, int bloodGroupId)
         {
 

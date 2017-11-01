@@ -57,11 +57,11 @@
     </Compile>
     <Compile Include="BankController.cs" />
     <Compile Include="DbConnection.cs" />
-    <Compile Include="Donation.cs">
+    <Compile Include="DonationForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Donation.Designer.cs">
-      <DependentUpon>Donation.cs</DependentUpon>
+    <Compile Include="DonationForm.Designer.cs">
+      <DependentUpon>DonationForm.cs</DependentUpon>
     </Compile>
     <Compile Include="DonationController.cs" />
     <Compile Include="Donor.cs" />
@@ -73,11 +73,11 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Recipient.cs">
+    <Compile Include="RecipientForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Recipient.Designer.cs">
-      <DependentUpon>Recipient.cs</DependentUpon>
+    <Compile Include="RecipientForm.Designer.cs">
+      <DependentUpon>RecipientForm.cs</DependentUpon>
     </Compile>
     <Compile Include="RecipitionController.cs" />
     <Compile Include="UserController.cs" />
@@ -90,8 +90,8 @@
     <EmbeddedResource Include="AllUserList.resx">
       <DependentUpon>AllUserList.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Donation.resx">
-      <DependentUpon>Donation.cs</DependentUpon>
+    <EmbeddedResource Include="DonationForm.resx">
+      <DependentUpon>DonationForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainWindow.resx">
       <DependentUpon>MainWindow.cs</DependentUpon>
@@ -106,8 +106,8 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="Recipient.resx">
-      <DependentUpon>Recipient.cs</DependentUpon>
+    <EmbeddedResource Include="RecipientForm.resx">
+      <DependentUpon>RecipientForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserRegistration.resx">
       <DependentUpon>UserRegistration.cs</DependentUpon>

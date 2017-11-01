@@ -1,6 +1,6 @@
 ﻿namespace Blood_Bank_Management
 {
-    partial class Recipient
+    partial class RecipientForm
     {
         /// <summary>
         /// Required designer variable.
@@ -43,6 +43,8 @@
             this.NameLabel = new System.Windows.Forms.Label();
             this.MobileNumberLabel = new System.Windows.Forms.Label();
             this.DateLabel = new System.Windows.Forms.Label();
+            this.BloodGroup = new System.Windows.Forms.Label();
+            this.BloodGroupLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.AllUserDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PacksNumericBox)).BeginInit();
             this.SuspendLayout();
@@ -167,7 +169,7 @@
             // 
             this.DateLabelTitle.AutoSize = true;
             this.DateLabelTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DateLabelTitle.Location = new System.Drawing.Point(208, 197);
+            this.DateLabelTitle.Location = new System.Drawing.Point(208, 220);
             this.DateLabelTitle.Name = "DateLabelTitle";
             this.DateLabelTitle.Size = new System.Drawing.Size(37, 16);
             this.DateLabelTitle.TabIndex = 19;
@@ -211,18 +213,42 @@
             // 
             this.DateLabel.AutoSize = true;
             this.DateLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DateLabel.Location = new System.Drawing.Point(251, 197);
+            this.DateLabel.Location = new System.Drawing.Point(251, 220);
             this.DateLabel.Name = "DateLabel";
             this.DateLabel.Size = new System.Drawing.Size(82, 16);
             this.DateLabel.TabIndex = 23;
             this.DateLabel.Text = "Current Date";
             this.DateLabel.Visible = false;
             // 
+            // BloodGroup
+            // 
+            this.BloodGroup.AutoSize = true;
+            this.BloodGroup.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BloodGroup.Location = new System.Drawing.Point(251, 195);
+            this.BloodGroup.Name = "BloodGroup";
+            this.BloodGroup.Size = new System.Drawing.Size(84, 16);
+            this.BloodGroup.TabIndex = 25;
+            this.BloodGroup.Text = "Blood Group";
+            this.BloodGroup.Visible = false;
+            // 
+            // BloodGroupLabel
+            // 
+            this.BloodGroupLabel.AutoSize = true;
+            this.BloodGroupLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BloodGroupLabel.Location = new System.Drawing.Point(161, 195);
+            this.BloodGroupLabel.Name = "BloodGroupLabel";
+            this.BloodGroupLabel.Size = new System.Drawing.Size(84, 16);
+            this.BloodGroupLabel.TabIndex = 24;
+            this.BloodGroupLabel.Text = "Blood Group";
+            this.BloodGroupLabel.Visible = false;
+            // 
             // Recipient
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(521, 308);
+            this.Controls.Add(this.BloodGroup);
+            this.Controls.Add(this.BloodGroupLabel);
             this.Controls.Add(this.DateLabel);
             this.Controls.Add(this.MobileNumberLabel);
             this.Controls.Add(this.NameLabel);
@@ -265,5 +291,7 @@
         private System.Windows.Forms.Label NameLabel;
         private System.Windows.Forms.Label MobileNumberLabel;
         private System.Windows.Forms.Label DateLabel;
+        private System.Windows.Forms.Label BloodGroup;
+        private System.Windows.Forms.Label BloodGroupLabel;
     }
 }
