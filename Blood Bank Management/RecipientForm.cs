@@ -123,7 +123,7 @@ namespace Blood_Bank_Management
             {
                 if (recipitionController.InsertRecipitionToDb(userId, totalPack, currentDate))
                 {
-                    if (userController.UpdateLastDonationDate(userId, currentDate))
+                    if (userController.UpdateLastRecipientDate(userId, currentDate))
                     {
                         MessageBox.Show("Done");
                     }

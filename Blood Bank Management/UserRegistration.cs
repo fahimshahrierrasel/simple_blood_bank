@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 namespace Blood_Bank_Management
@@ -35,8 +34,6 @@ namespace Blood_Bank_Management
         
         private void RegisterButtonClickListener(object sender, EventArgs e)
         {
-            bool validate = true;
-            
             string userName = userFullName.Text;
             DateTime dob = userDateOfBirth.Value;
             int bloodGroup = userBloodGroup.SelectedIndex;
@@ -44,21 +41,7 @@ namespace Blood_Bank_Management
             string mobileNumber = userMobileNumber.Text;
             string address = userAddress.Text;
 
-            
-            // Checking if User Name is empty
-            if (userName.Length <= 0)
-                validate = false;
-            // Checking if User is under weight
-            if (weight <= 40)
-                validate = false;
-            // Checking if mobile number is valid. like mobile number is all numeric
-            if (!Regex.IsMatch(mobileNumber, @"^\d+$"))
-                validate = false;
-            // Checking if user adress is empty
-            if (address.Length <= 0)
-                validate = false;
-
-            if (validate)
+            if (userController.ValidateRegistrationData(userName, dob, weight, mobileNumber, address))
             {
                 if (userController.InsertDonorToDb(userName, dob, bloodGroup, weight, mobileNumber, address))
                 {

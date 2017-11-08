@@ -3,7 +3,7 @@
 namespace Blood_Bank_Management.Tests
 {
     [TestClass]
-    public class GetAvailablePacksForBloodGroup_Should
+    public class BloodStorageTests
     {
         [TestMethod()]
         public void GetAvailablePacksForBloodGroupTest()

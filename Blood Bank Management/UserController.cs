@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Data;
 using System.Data.SqlClient;
+using System.Text.RegularExpressions;
 
 namespace Blood_Bank_Management
 {
-    class UserController
+    public class UserController
     {
         private DbConnection dbConnection;
 
@@ -110,6 +111,43 @@ namespace Blood_Bank_Management
                 dbConnection.Connection.Close();
             }
             return true;
+        }
+
+        public bool HaveEnoughWeight(int weight)
+        {
+            return weight >= 50;
+        }
+
+        public bool IsMobileNumber(string mobileNumber)
+        {
+            return Regex.IsMatch(mobileNumber, @"^\d+$");
+        }
+
+        public bool HasEnoughAgeToDonate(DateTime dob)
+        {
+            double totalDays = (DateTime.Now.Date - dob.Date).TotalDays;
+            return ((totalDays / 365) >= 18.0);
+        }
+
+        public bool ValidateRegistrationData(string userName, DateTime dob, int weight, string mobileNumber, string address)
+        {
+            bool validate;
+            
+            // Checking if User Name is empty
+            validate = userName.Length > 0;
+            
+            // Checking if User is under weight
+            validate = HaveEnoughWeight(weight);
+            
+            // Checking if mobile number is valid. like mobile number is all numeric
+            validate = IsMobileNumber(mobileNumber);
+            
+            // Checking if user adress is empty
+            validate = address.Length > 0;
+
+            validate = HasEnoughAgeToDonate(dob);
+            
+            return validate;
         }
     }
 }
