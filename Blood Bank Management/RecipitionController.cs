@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Data.SqlClient;
 
 namespace Blood_Bank_Management
 {
@@ -39,6 +36,17 @@ namespace Blood_Bank_Management
                 dbConnection.Connection.Close();
             }
             return true;
+        }
+
+        public DataTable GetRecipientInformation()
+        {
+            dbConnection.Command.CommandText = "SELECT Reciption.receptionId, Donor.name, Reciption.quantity, Reciption.date FROM Reciption, Donor WHERE Reciption.DonorId = Donor.DonorId";
+            dbConnection.Connection.Open();
+            SqlDataAdapter dataAdapter = new SqlDataAdapter(dbConnection.Command);
+            dbConnection.Connection.Close();
+            DataSet dataSet = new DataSet();
+            dataAdapter.Fill(dataSet);
+            return dataSet.Tables[0];
         }
     }
 }

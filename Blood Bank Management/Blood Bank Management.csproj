@@ -86,6 +86,12 @@
     <Compile Include="RecipientForm.Designer.cs">
       <DependentUpon>RecipientForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="RecipientLogForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RecipientLogForm.Designer.cs">
+      <DependentUpon>RecipientLogForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="RecipitionController.cs" />
     <Compile Include="StorageForm.cs">
       <SubType>Form</SubType>
@@ -124,6 +130,9 @@
     </Compile>
     <EmbeddedResource Include="RecipientForm.resx">
       <DependentUpon>RecipientForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RecipientLogForm.resx">
+      <DependentUpon>RecipientLogForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="StorageForm.resx">
       <DependentUpon>StorageForm.cs</DependentUpon>

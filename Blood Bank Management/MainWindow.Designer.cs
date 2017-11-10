@@ -34,7 +34,7 @@
             this.DonationButton = new System.Windows.Forms.Button();
             this.RecipientButton = new System.Windows.Forms.Button();
             this.DonationLogButton = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
+            this.RecipientLogButton = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.DateLabel = new System.Windows.Forms.Label();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
@@ -100,16 +100,17 @@
             this.DonationLogButton.UseVisualStyleBackColor = true;
             this.DonationLogButton.Click += new System.EventHandler(this.DonationLogButton_Click);
             // 
-            // button4
+            // RecipientLogButton
             // 
-            this.button4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.Location = new System.Drawing.Point(419, 238);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(125, 35);
-            this.button4.TabIndex = 5;
-            this.button4.Text = "Recipient Log";
-            this.button4.UseVisualStyleBackColor = true;
+            this.RecipientLogButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.RecipientLogButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.RecipientLogButton.Location = new System.Drawing.Point(419, 238);
+            this.RecipientLogButton.Name = "RecipientLogButton";
+            this.RecipientLogButton.Size = new System.Drawing.Size(125, 35);
+            this.RecipientLogButton.TabIndex = 5;
+            this.RecipientLogButton.Text = "Recipient Log";
+            this.RecipientLogButton.UseVisualStyleBackColor = true;
+            this.RecipientLogButton.Click += new System.EventHandler(this.RecipientLogButton_Click);
             // 
             // label1
             // 
@@ -170,7 +171,7 @@
             this.Controls.Add(this.linkLabel1);
             this.Controls.Add(this.DateLabel);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.button4);
+            this.Controls.Add(this.RecipientLogButton);
             this.Controls.Add(this.DonationLogButton);
             this.Controls.Add(this.RecipientButton);
             this.Controls.Add(this.DonationButton);
@@ -194,7 +195,7 @@
         private System.Windows.Forms.Button DonationButton;
         private System.Windows.Forms.Button RecipientButton;
         private System.Windows.Forms.Button DonationLogButton;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button RecipientLogButton;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label DateLabel;
         private System.Windows.Forms.LinkLabel linkLabel1;

@@ -4,23 +4,23 @@ using System.Windows.Forms;
 
 namespace Blood_Bank_Management
 {
-    public partial class DonationLogForm : Form
+    public partial class RecipientLogForm : Form
     {
-        private DonationController donationController;
-        public DonationLogForm()
+        private RecipitionController recipitionController;
+        public RecipientLogForm()
         {
             InitializeComponent();
-            donationController = new DonationController();
+            recipitionController = new RecipitionController();
         }
 
-        private void DonationLogForm_Load(object sender, EventArgs e)
+        private void RecipientLogForm_Load(object sender, EventArgs e)
         {
-            DonationDataGridView.DataSource = donationController.GetDonationInformation();
+            RecipientDataGridView.DataSource = recipitionController.GetRecipientInformation();
         }
 
         private void SearchTextBox_TextChanged(object sender, EventArgs e)
         {
-            ((DataTable)DonationDataGridView.DataSource).DefaultView.RowFilter = $"name LIKE '{SearchTextBox.Text}%'";
+            ((DataTable)RecipientDataGridView.DataSource).DefaultView.RowFilter = $"name LIKE '{SearchTextBox.Text}%'";
         }
 
         private void SearchTextBox_Enter(object sender, EventArgs e)
