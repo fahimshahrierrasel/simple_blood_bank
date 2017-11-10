@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Windows.Forms;
 
 namespace Blood_Bank_Management
 {
@@ -51,6 +50,17 @@ namespace Blood_Bank_Management
             return totalAvailablePack;
         }
 
+        public DataTable GetStorageInformation()
+        {
+            dbConnection.Command.CommandText = "SELECT BloodGroup.bgName as 'Blood Group', Storage.quantity as 'Quantity' From BloodGroup, Storage WHERE Storage.bgId = BloodGroup.bgId";
+            dbConnection.Connection.Open();
+            SqlDataAdapter dataAdapter = new SqlDataAdapter(dbConnection.Command);
+            dbConnection.Connection.Close();
+            DataSet dataSet = new DataSet();
+            dataAdapter.Fill(dataSet);
+            return dataSet.Tables[0];
+        }
+
         public bool CanReciptBlood(int totalPack, int bloodGroupId)
         {
             if (GetAvailablePacksForBloodGroup(bloodGroupId) - totalPack >= 0)
@@ -66,7 +76,6 @@ namespace Blood_Bank_Management
 
             int updatedQuantity = GetAvailablePacksForBloodGroup(bloodGroupId) + qunatity;
             
-            // UPDATE CustTest SET CustID = @p1 , CustName = @p2 WHERE ( CustID = @p3 AND CustName = @p4 )
             try
             {
                 dbConnection.Command.CommandText =

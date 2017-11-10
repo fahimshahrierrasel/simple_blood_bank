@@ -38,6 +38,7 @@
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -80,6 +81,12 @@
       <DependentUpon>RecipientForm.cs</DependentUpon>
     </Compile>
     <Compile Include="RecipitionController.cs" />
+    <Compile Include="StorageForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StorageForm.Designer.cs">
+      <DependentUpon>StorageForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserController.cs" />
     <Compile Include="UserRegistration.cs">
       <SubType>Form</SubType>
@@ -108,6 +115,9 @@
     </Compile>
     <EmbeddedResource Include="RecipientForm.resx">
       <DependentUpon>RecipientForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StorageForm.resx">
+      <DependentUpon>StorageForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserRegistration.resx">
       <DependentUpon>UserRegistration.cs</DependentUpon>

@@ -38,5 +38,11 @@ namespace Blood_Bank_Management
             var recipientForm = new RecipientForm();
             recipientForm.ShowDialog();
         }
+
+        private void StorageButton_Click(object sender, EventArgs e)
+        {
+            var storageForm = new StorageForm();
+            storageForm.ShowDialog();
+        }
     }
 }

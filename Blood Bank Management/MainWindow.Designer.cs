@@ -38,7 +38,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.DateLabel = new System.Windows.Forms.Label();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
-            this.linkLabel2 = new System.Windows.Forms.LinkLabel();
+            this.StorageButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // DonorRegisterButton
@@ -69,7 +69,7 @@
             // DonationButton
             // 
             this.DonationButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DonationButton.Location = new System.Drawing.Point(40, 162);
+            this.DonationButton.Location = new System.Drawing.Point(40, 159);
             this.DonationButton.Name = "DonationButton";
             this.DonationButton.Size = new System.Drawing.Size(125, 35);
             this.DonationButton.TabIndex = 2;
@@ -81,7 +81,7 @@
             // 
             this.RecipientButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.RecipientButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.RecipientButton.Location = new System.Drawing.Point(419, 162);
+            this.RecipientButton.Location = new System.Drawing.Point(419, 160);
             this.RecipientButton.Name = "RecipientButton";
             this.RecipientButton.Size = new System.Drawing.Size(125, 35);
             this.RecipientButton.TabIndex = 3;
@@ -92,7 +92,7 @@
             // button3
             // 
             this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(40, 239);
+            this.button3.Location = new System.Drawing.Point(40, 236);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(125, 35);
             this.button3.TabIndex = 4;
@@ -103,7 +103,7 @@
             // 
             this.button4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.Location = new System.Drawing.Point(419, 239);
+            this.button4.Location = new System.Drawing.Point(419, 238);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(125, 35);
             this.button4.TabIndex = 5;
@@ -137,7 +137,7 @@
             this.linkLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.linkLabel1.AutoSize = true;
             this.linkLabel1.LinkArea = new System.Windows.Forms.LinkArea(2, 18);
-            this.linkLabel1.Location = new System.Drawing.Point(40, 335);
+            this.linkLabel1.Location = new System.Drawing.Point(461, 335);
             this.linkLabel1.Name = "linkLabel1";
             this.linkLabel1.Size = new System.Drawing.Size(111, 17);
             this.linkLabel1.TabIndex = 8;
@@ -145,18 +145,17 @@
             this.linkLabel1.Text = "© Simple Blood Bank";
             this.linkLabel1.UseCompatibleTextRendering = true;
             // 
-            // linkLabel2
+            // StorageButton
             // 
-            this.linkLabel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.linkLabel2.AutoSize = true;
-            this.linkLabel2.LinkArea = new System.Windows.Forms.LinkArea(13, 22);
-            this.linkLabel2.Location = new System.Drawing.Point(419, 335);
-            this.linkLabel2.Name = "linkLabel2";
-            this.linkLabel2.Size = new System.Drawing.Size(134, 17);
-            this.linkLabel2.TabIndex = 9;
-            this.linkLabel2.TabStop = true;
-            this.linkLabel2.Text = "Developed by Rogue One";
-            this.linkLabel2.UseCompatibleTextRendering = true;
+            this.StorageButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.StorageButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.StorageButton.Location = new System.Drawing.Point(40, 313);
+            this.StorageButton.Name = "StorageButton";
+            this.StorageButton.Size = new System.Drawing.Size(125, 35);
+            this.StorageButton.TabIndex = 9;
+            this.StorageButton.Text = "Storage";
+            this.StorageButton.UseVisualStyleBackColor = true;
+            this.StorageButton.Click += new System.EventHandler(this.StorageButton_Click);
             // 
             // MainWindow
             // 
@@ -166,7 +165,7 @@
             this.BackgroundImage = global::Blood_Bank_Management.Properties.Resources.blood_donation;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(584, 361);
-            this.Controls.Add(this.linkLabel2);
+            this.Controls.Add(this.StorageButton);
             this.Controls.Add(this.linkLabel1);
             this.Controls.Add(this.DateLabel);
             this.Controls.Add(this.label1);
@@ -198,7 +197,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label DateLabel;
         private System.Windows.Forms.LinkLabel linkLabel1;
-        private System.Windows.Forms.LinkLabel linkLabel2;
+        private System.Windows.Forms.Button StorageButton;
     }
 }
 
