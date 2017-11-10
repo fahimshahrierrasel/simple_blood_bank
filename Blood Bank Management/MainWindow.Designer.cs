@@ -33,7 +33,7 @@
             this.ShowAllDonorButton = new System.Windows.Forms.Button();
             this.DonationButton = new System.Windows.Forms.Button();
             this.RecipientButton = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.DonationLogButton = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.DateLabel = new System.Windows.Forms.Label();
@@ -89,15 +89,16 @@
             this.RecipientButton.UseVisualStyleBackColor = true;
             this.RecipientButton.Click += new System.EventHandler(this.RecipientButton_Click);
             // 
-            // button3
+            // DonationLogButton
             // 
-            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(40, 236);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(125, 35);
-            this.button3.TabIndex = 4;
-            this.button3.Text = "Donation Log";
-            this.button3.UseVisualStyleBackColor = true;
+            this.DonationLogButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DonationLogButton.Location = new System.Drawing.Point(40, 236);
+            this.DonationLogButton.Name = "DonationLogButton";
+            this.DonationLogButton.Size = new System.Drawing.Size(125, 35);
+            this.DonationLogButton.TabIndex = 4;
+            this.DonationLogButton.Text = "Donation Log";
+            this.DonationLogButton.UseVisualStyleBackColor = true;
+            this.DonationLogButton.Click += new System.EventHandler(this.DonationLogButton_Click);
             // 
             // button4
             // 
@@ -170,7 +171,7 @@
             this.Controls.Add(this.DateLabel);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button4);
-            this.Controls.Add(this.button3);
+            this.Controls.Add(this.DonationLogButton);
             this.Controls.Add(this.RecipientButton);
             this.Controls.Add(this.DonationButton);
             this.Controls.Add(this.ShowAllDonorButton);
@@ -192,7 +193,7 @@
         private System.Windows.Forms.Button ShowAllDonorButton;
         private System.Windows.Forms.Button DonationButton;
         private System.Windows.Forms.Button RecipientButton;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button DonationLogButton;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label DateLabel;

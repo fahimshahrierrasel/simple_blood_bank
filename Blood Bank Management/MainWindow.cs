@@ -44,5 +44,11 @@ namespace Blood_Bank_Management
             var storageForm = new StorageForm();
             storageForm.ShowDialog();
         }
+
+        private void DonationLogButton_Click(object sender, EventArgs e)
+        {
+            var donationLogForm = new DonationLogForm();
+            donationLogForm.ShowDialog();
+        }
     }
 }
