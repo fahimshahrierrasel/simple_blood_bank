@@ -1,11 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27004.2005
+VisualStudioVersion = 15.0.27004.2008
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blood Bank Management", "Blood Bank Management\Blood Bank Management.csproj", "{F49C4CAB-305A-4E70-8DE3-ACC1AC305D97}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blood Bank Management.Tests", "Blood Bank Management.Tests\Blood Bank Management.Tests.csproj", "{D5446F72-E88D-4C14-A40D-BC7CC1DA4343}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blood Bank Management.nUnit", "Blood Bank Management.nUnit\Blood Bank Management.nUnit.csproj", "{EE6C30DF-895D-49C9-AECF-52B248CDA585}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{D5446F72-E88D-4C14-A40D-BC7CC1DA4343}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D5446F72-E88D-4C14-A40D-BC7CC1DA4343}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D5446F72-E88D-4C14-A40D-BC7CC1DA4343}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EE6C30DF-895D-49C9-AECF-52B248CDA585}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EE6C30DF-895D-49C9-AECF-52B248CDA585}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EE6C30DF-895D-49C9-AECF-52B248CDA585}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EE6C30DF-895D-49C9-AECF-52B248CDA585}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
