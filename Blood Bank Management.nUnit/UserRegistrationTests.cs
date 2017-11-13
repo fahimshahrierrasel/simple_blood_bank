@@ -7,7 +7,7 @@ namespace Blood_Bank_Management.nUnit
     public class UserRegistrationTests
     {
         [TestCase]
-        public void HasEnoughDateToDonateTest()
+        public void HasEnoughAgeToDonateTest()
         {
             // arrange
             var userController = new UserController();

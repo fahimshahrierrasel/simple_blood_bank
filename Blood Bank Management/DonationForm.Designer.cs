@@ -116,9 +116,24 @@
             // 
             this.PacksNumericBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.PacksNumericBox.Location = new System.Drawing.Point(251, 166);
+            this.PacksNumericBox.Maximum = new decimal(new int[] {
+            2,
+            0,
+            0,
+            0});
+            this.PacksNumericBox.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.PacksNumericBox.Name = "PacksNumericBox";
             this.PacksNumericBox.Size = new System.Drawing.Size(120, 22);
             this.PacksNumericBox.TabIndex = 14;
+            this.PacksNumericBox.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.PacksNumericBox.Visible = false;
             // 
             // PacksLabelTitle
@@ -242,7 +257,7 @@
             this.BloodGroup.Text = "Blood Group";
             this.BloodGroup.Visible = false;
             // 
-            // Donation
+            // DonationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -264,7 +279,7 @@
             this.Controls.Add(this.SearchTextBox);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.AllUserDataGridView);
-            this.Name = "Donation";
+            this.Name = "DonationForm";
             this.Text = "Donation";
             this.Load += new System.EventHandler(this.Donation_Load);
             ((System.ComponentModel.ISupportInitialize)(this.AllUserDataGridView)).EndInit();

@@ -4,7 +4,7 @@ using System.Data.SqlClient;
 
 namespace Blood_Bank_Management
 {
-    class DonationController
+    public class DonationController
     {
         private DbConnection dbConnection;
 
@@ -47,6 +47,16 @@ namespace Blood_Bank_Management
             DataSet dataSet = new DataSet();
             dataAdapter.Fill(dataSet);
             return dataSet.Tables[0];
+        }
+
+        public double DiferenceBetweenLastDonation(String lastDonationDateString)
+        {
+            if (lastDonationDateString.Length > 0)
+            {
+                DateTime lastDonationDate = DateTime.Parse(lastDonationDateString);
+                return (lastDonationDate.Date - DateTime.Now.Date).TotalDays;
+            }
+            return 91.0;
         }
     }
 }

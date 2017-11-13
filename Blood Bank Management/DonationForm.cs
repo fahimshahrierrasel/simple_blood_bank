@@ -55,28 +55,14 @@ namespace Blood_Bank_Management
                 DateLabel.Text = DateTime.Now.ToString("D");
                 BloodGroup.Text = bloodGroups[(int) userCells[3].Value];
                 
-
-                DateTime lastDonationDate;
-                double totalLeave = 0;
-                if (userCells[7].Value.ToString().Length > 0)
-                {
-                    lastDonationDate = new DateTime();
-                    totalLeave = (DateTime.Now.Date - lastDonationDate.Date).TotalDays;
-                }
-                else
-                {
-                    totalLeave = 91.0;
-                }
-                
-                
-                if (totalLeave >= 90)
+                if (donationController.DiferenceBetweenLastDonation(userCells[7].Value.ToString()) >= 90)
                 {
                     ShowDonationForm(true);
                     ShowSearchBoxAndDataGrid(false);
                 }
                 else
                 {
-                    MessageBox.Show("User Last Donation Date  is less then 90 days from Today", "Warning!!");
+                    MessageBox.Show(@"User Last Donation Date  is less then 90 days from Today", @"Warning!!");
                 }
             }
         }
@@ -138,29 +124,29 @@ namespace Blood_Bank_Management
             int userId = Convert.ToInt32(IdLabel.Text);
             int totalPack = (int) PacksNumericBox.Value;
             var currentDate = DateTime.Now;
-
+            
             if (donationController.InsertDonationToDb(userId, totalPack, currentDate))
             {
                 if (bankController.UpdateStorageForBloodGroup(totalPack, bloodGroups.IndexOf(BloodGroup.Text)))
                 {
                     if (userController.UpdateLastDonationDate(userId, currentDate))
                     {
-                        MessageBox.Show("Done");
+                        MessageBox.Show(@"Done");
                     }
                     else
                     {
-                        MessageBox.Show("Something went wrong to update");
+                        MessageBox.Show(@"Something went wrong to update");
                     }
                 }
                 else
                 {
-                    MessageBox.Show("Something went wrong to update");
+                    MessageBox.Show(@"Something went wrong to update");
                 }
 
             }
             else
             {
-                MessageBox.Show("Donation is not possible");
+                MessageBox.Show(@"Donation is not possible");
             }
         }
     }
