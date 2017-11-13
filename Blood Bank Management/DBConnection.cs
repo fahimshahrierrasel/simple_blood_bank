@@ -1,10 +1,10 @@
-﻿using System.Configuration;
-using System.Data.SqlClient;
+﻿using System.Data.SqlClient;
 
 namespace Blood_Bank_Management
 {
     class DbConnection
     {
+        private string ConnString = @"Server=WINDOWSPROGRAMM\SQLEXPRESS; Database=BloodBank; Trusted_Connection=True;";
         private SqlConnection connection;
         private SqlCommand command;
 
@@ -20,9 +20,8 @@ namespace Blood_Bank_Management
 
         public DbConnection()
         {
-            connection = new SqlConnection();
+            connection = new SqlConnection(ConnString);
             command = new SqlCommand();
-            connection.ConnectionString = ConfigurationManager.ConnectionStrings["BBConnectionString"].ConnectionString;
             command.Connection = connection;
         }
 
