@@ -7,11 +7,11 @@ namespace Blood_Bank_Management
 {
     public class UserController
     {
-        private DbConnection dbConnection;
+        private readonly DbConnection _dbConnection;
 
         public UserController()
         {
-            dbConnection = new DbConnection();
+            _dbConnection = new DbConnection();
         }
 
         // Insert Donor info to database
@@ -19,16 +19,16 @@ namespace Blood_Bank_Management
         {
             try
             {
-                dbConnection.Command.CommandText =
+                _dbConnection.Command.CommandText =
                     "Insert into Donor (name, dob, bloodGroup, weight, mobileNo, address) Values(@UserName, @Dob, @BloodGroup, @Weight, @MobileNumber, @Address)";
-                dbConnection.Command.Parameters.Add("@Username", SqlDbType.VarChar).Value = userName;
-                dbConnection.Command.Parameters.Add("@Dob", SqlDbType.Date).Value = dob.Date;
-                dbConnection.Command.Parameters.Add("@BloodGroup", SqlDbType.Int).Value = bloodGroup;
-                dbConnection.Command.Parameters.Add("@Weight", SqlDbType.Int).Value = weight;
-                dbConnection.Command.Parameters.Add("@MobileNumber", SqlDbType.VarChar).Value = mobileNumber;
-                dbConnection.Command.Parameters.Add("@Address", SqlDbType.VarChar).Value = address;
-                dbConnection.Connection.Open();
-                dbConnection.Command.ExecuteNonQuery(); 
+                _dbConnection.Command.Parameters.Add("@Username", SqlDbType.VarChar).Value = userName;
+                _dbConnection.Command.Parameters.Add("@Dob", SqlDbType.Date).Value = dob.Date;
+                _dbConnection.Command.Parameters.Add("@BloodGroup", SqlDbType.Int).Value = bloodGroup;
+                _dbConnection.Command.Parameters.Add("@Weight", SqlDbType.Int).Value = weight;
+                _dbConnection.Command.Parameters.Add("@MobileNumber", SqlDbType.VarChar).Value = mobileNumber;
+                _dbConnection.Command.Parameters.Add("@Address", SqlDbType.VarChar).Value = address;
+                _dbConnection.Connection.Open();
+                _dbConnection.Command.ExecuteNonQuery(); 
             }
             catch (Exception exception)
             {
@@ -37,7 +37,7 @@ namespace Blood_Bank_Management
             }
             finally
             {
-                dbConnection.Connection.Close();
+                _dbConnection.Connection.Close();
             }
             return true;
         }
@@ -47,9 +47,9 @@ namespace Blood_Bank_Management
             DataTable userDataTable = null;
             try
             {
-                dbConnection.Command.CommandText = "Select * From Donor";
-                dbConnection.Connection.Open();
-                SqlDataAdapter dataAdapter = new SqlDataAdapter(dbConnection.Command);
+                _dbConnection.Command.CommandText = "Select * From Donor";
+                _dbConnection.Connection.Open();
+                SqlDataAdapter dataAdapter = new SqlDataAdapter(_dbConnection.Command);
                 DataSet dataSet = new DataSet();
                 dataAdapter.Fill(dataSet, "Donor");
                 userDataTable = dataSet.Tables["Donor"];
@@ -60,7 +60,7 @@ namespace Blood_Bank_Management
             }
             finally
             {
-                dbConnection.Connection.Close();
+                _dbConnection.Connection.Close();
             }
             return userDataTable;
         }
@@ -70,12 +70,12 @@ namespace Blood_Bank_Management
             // UPDATE CustTest SET CustID = @p1 , CustName = @p2 WHERE ( CustID = @p3 AND CustName = @p4 )
             try
             {
-                dbConnection.Command.CommandText =
+                _dbConnection.Command.CommandText =
                     "UPDATE Donor SET lastDonationDate = @CurrDate WHERE DonorId = @DID";
-                dbConnection.Command.Parameters.Add("@CurrDate", SqlDbType.Date).Value = currentDate.Date;
-                dbConnection.Command.Parameters.Add("@DID", SqlDbType.Int).Value = donorId;
-                dbConnection.Connection.Open();
-                dbConnection.Command.ExecuteNonQuery();
+                _dbConnection.Command.Parameters.Add("@CurrDate", SqlDbType.Date).Value = currentDate.Date;
+                _dbConnection.Command.Parameters.Add("@DID", SqlDbType.Int).Value = donorId;
+                _dbConnection.Connection.Open();
+                _dbConnection.Command.ExecuteNonQuery();
             }
             catch (Exception exception)
             {
@@ -84,7 +84,7 @@ namespace Blood_Bank_Management
             }
             finally
             {
-                dbConnection.Connection.Close();
+                _dbConnection.Connection.Close();
             }
             return true;
         }
@@ -94,12 +94,12 @@ namespace Blood_Bank_Management
             // UPDATE CustTest SET CustID = @p1 , CustName = @p2 WHERE ( CustID = @p3 AND CustName = @p4 )
             try
             {
-                dbConnection.Command.CommandText =
+                _dbConnection.Command.CommandText =
                     "UPDATE Donor SET lastrecipientDate = @CurrDate WHERE DonorId = @DID";
-                dbConnection.Command.Parameters.Add("@CurrDate", SqlDbType.Date).Value = currentDate.Date;
-                dbConnection.Command.Parameters.Add("@DID", SqlDbType.Int).Value = donorId;
-                dbConnection.Connection.Open();
-                dbConnection.Command.ExecuteNonQuery();
+                _dbConnection.Command.Parameters.Add("@CurrDate", SqlDbType.Date).Value = currentDate.Date;
+                _dbConnection.Command.Parameters.Add("@DID", SqlDbType.Int).Value = donorId;
+                _dbConnection.Connection.Open();
+                _dbConnection.Command.ExecuteNonQuery();
             }
             catch (Exception exception)
             {
@@ -108,17 +108,17 @@ namespace Blood_Bank_Management
             }
             finally
             {
-                dbConnection.Connection.Close();
+                _dbConnection.Connection.Close();
             }
             return true;
         }
 
-        public bool HaveEnoughWeight(int weight)
+        private bool HasEnoughWeight(int weight)
         {
             return weight >= 50;
         }
 
-        public bool IsMobileNumber(string mobileNumber)
+        private bool IsMobileNumber(string mobileNumber)
         {
             return Regex.IsMatch(mobileNumber, @"^\d+$");
         }
@@ -137,7 +137,7 @@ namespace Blood_Bank_Management
             validate = userName.Length > 0;
             
             // Checking if User is under weight
-            validate = HaveEnoughWeight(weight);
+            validate = HasEnoughWeight(weight);
             
             // Checking if mobile number is valid. like mobile number is all numeric
             validate = IsMobileNumber(mobileNumber);

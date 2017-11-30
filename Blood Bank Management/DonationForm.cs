@@ -62,7 +62,10 @@ namespace Blood_Bank_Management
                 }
                 else
                 {
-                    MessageBox.Show(@"User Last Donation Date  is less then 90 days from Today", @"Warning!!");
+                    MessageBox.Show(@"Name should not be empty
+Weight should be >= 40
+Mobile Number should be all numeric
+Address should not empty!", @"Warning!!");
                 }
             }
         }

@@ -7,19 +7,19 @@ namespace Blood_Bank_Management
 {
     public class BankController
     {
-        private DbConnection dbConnection;
+        private readonly DbConnection _dbConnection;
 
         public BankController()
         {
-            dbConnection = new DbConnection();
+            _dbConnection = new DbConnection();
         }
 
         public List<String> GetBloodGroups()
         {
-            dbConnection.Command.CommandText = "Select * From BloodGroup";
-            dbConnection.Connection.Open();
-            SqlDataAdapter dataAdapter = new SqlDataAdapter(dbConnection.Command);
-            dbConnection.Connection.Close();
+            _dbConnection.Command.CommandText = "Select * From BloodGroup";
+            _dbConnection.Connection.Open();
+            SqlDataAdapter dataAdapter = new SqlDataAdapter(_dbConnection.Command);
+            _dbConnection.Connection.Close();
 
             DataSet dataSet = new DataSet();
             dataAdapter.Fill(dataSet, "BloodGroup");
@@ -37,25 +37,25 @@ namespace Blood_Bank_Management
 
         public int GetAvailablePacksForBloodGroup(int bloodgId)
         {
-            dbConnection.Command.CommandText = "Select quantity From Storage Where bgId = @BloodID";
-            dbConnection.Command.Parameters.Add("@BloodID", SqlDbType.Int).Value = bloodgId;
-            dbConnection.Connection.Open();
-            SqlDataAdapter dataAdapter = new SqlDataAdapter(dbConnection.Command);
-            dbConnection.Connection.Close();
+            _dbConnection.Command.CommandText = "Select quantity From Storage Where bgId = @BloodID";
+            _dbConnection.Command.Parameters.Add("@BloodID", SqlDbType.Int).Value = bloodgId;
+            _dbConnection.Connection.Open();
+            SqlDataAdapter dataAdapter = new SqlDataAdapter(_dbConnection.Command);
+            _dbConnection.Connection.Close();
             DataSet dataSet = new DataSet();
             dataAdapter.Fill(dataSet, "Storage");
             DataTable stroageTable = dataSet.Tables["Storage"];
             int totalAvailablePack = Int32.Parse(stroageTable.Rows[0]["quantity"].ToString());
-            dbConnection.ClearCommandText();
+            _dbConnection.ClearCommandText();
             return totalAvailablePack;
         }
 
         public DataTable GetStorageInformation()
         {
-            dbConnection.Command.CommandText = "SELECT BloodGroup.bgName as 'Blood Group', Storage.quantity as 'Quantity' From BloodGroup, Storage WHERE Storage.bgId = BloodGroup.bgId";
-            dbConnection.Connection.Open();
-            SqlDataAdapter dataAdapter = new SqlDataAdapter(dbConnection.Command);
-            dbConnection.Connection.Close();
+            _dbConnection.Command.CommandText = "SELECT BloodGroup.bgName as 'Blood Group', Storage.quantity as 'Quantity' From BloodGroup, Storage WHERE Storage.bgId = BloodGroup.bgId";
+            _dbConnection.Connection.Open();
+            SqlDataAdapter dataAdapter = new SqlDataAdapter(_dbConnection.Command);
+            _dbConnection.Connection.Close();
             DataSet dataSet = new DataSet();
             dataAdapter.Fill(dataSet);
             return dataSet.Tables[0];
@@ -78,12 +78,12 @@ namespace Blood_Bank_Management
             
             try
             {
-                dbConnection.Command.CommandText =
+                _dbConnection.Command.CommandText =
                     "UPDATE Storage SET quantity = @QUANTITY WHERE bgId = @BGID";
-                dbConnection.Command.Parameters.Add("@QUANTITY", SqlDbType.Int).Value = updatedQuantity;
-                dbConnection.Command.Parameters.Add("@BGID", SqlDbType.Int).Value = bloodGroupId;
-                dbConnection.Connection.Open();
-                dbConnection.Command.ExecuteNonQuery();
+                _dbConnection.Command.Parameters.Add("@QUANTITY", SqlDbType.Int).Value = updatedQuantity;
+                _dbConnection.Command.Parameters.Add("@BGID", SqlDbType.Int).Value = bloodGroupId;
+                _dbConnection.Connection.Open();
+                _dbConnection.Command.ExecuteNonQuery();
             }
             catch (Exception exception)
             {
@@ -92,7 +92,7 @@ namespace Blood_Bank_Management
             }
             finally
             {
-                dbConnection.Connection.Close();
+                _dbConnection.Connection.Close();
             }
             return true;
         }

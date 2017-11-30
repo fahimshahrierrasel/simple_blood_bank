@@ -8,21 +8,21 @@ namespace Blood_Bank_Management
 {
     public partial class AllUserList : Form
     {
-        private UserController userController;
-        private BankController bankController;
-        private List<string> bloodGroups;
+        private readonly UserController _userController;
+        private readonly BankController _bankController;
+        private readonly List<string> _bloodGroups;
         
         public AllUserList()
         {
             InitializeComponent();
-            userController = new UserController();
-            bankController = new BankController();
-            bloodGroups = bankController.GetBloodGroups();
+            _userController = new UserController();
+            _bankController = new BankController();
+            _bloodGroups = _bankController.GetBloodGroups();
         }
 
         private void AllUserList_Load(object sender, EventArgs e)
         {
-            AllUserDataGridView.DataSource = userController.GetAllUser();
+            AllUserDataGridView.DataSource = _userController.GetAllUser();
 
             try
             {
@@ -50,7 +50,7 @@ namespace Blood_Bank_Management
                 var userInformation = new StringBuilder($"User ID: {userCells[0].Value}\n");
                 userInformation.AppendLine($"Name: {userCells[1].Value}");
                 userInformation.AppendLine($"Date of Birth: {userCells[2].Value}");
-                userInformation.AppendLine($"Blood Broup: {bloodGroups[Convert.ToInt32(userCells[3].Value)]}");
+                userInformation.AppendLine($"Blood Broup: {_bloodGroups[Convert.ToInt32(userCells[3].Value)]}");
                 userInformation.AppendLine($"Weight: {userCells[4].Value} KG");
                 userInformation.AppendLine($"Mobile No: {userCells[5].Value}");
                 userInformation.AppendLine($"Address: {userCells[6].Value}");

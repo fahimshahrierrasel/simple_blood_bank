@@ -7,22 +7,22 @@ namespace Blood_Bank_Management
 {
     public partial class RecipientForm : Form
     {
-        private UserController userController;
-        private RecipitionController recipitionController;
-        private BankController bankController;
-        List<String> bloodGroups;
+        private readonly UserController _userController;
+        private readonly RecipitionController _recipitionController;
+        private readonly BankController _bankController;
+        private readonly List<String> _bloodGroups;
         public RecipientForm()
         {
             InitializeComponent();
-            userController = new UserController();
-            recipitionController = new RecipitionController();
-            bankController = new BankController();
-            bloodGroups = bankController.GetBloodGroups();
+            _userController = new UserController();
+            _recipitionController = new RecipitionController();
+            _bankController = new BankController();
+            _bloodGroups = _bankController.GetBloodGroups();
         }
 
         private void Recipient_Load(object sender, EventArgs e)
         {
-            AllUserDataGridView.DataSource = userController.GetAllUser();
+            AllUserDataGridView.DataSource = _userController.GetAllUser();
 
             try
             {
@@ -52,7 +52,7 @@ namespace Blood_Bank_Management
                 NameLabel.Text = userCells[1].Value.ToString();
                 MobileNumberLabel.Text = userCells[5].Value.ToString();
                 PacksNumericBox.Value = 1;
-                BloodGroup.Text = bloodGroups[(int)userCells[3].Value];
+                BloodGroup.Text = _bloodGroups[(int)userCells[3].Value];
                 DateLabel.Text = DateTime.Now.ToString("D");
 
                 ShowDonationForm(true);
@@ -117,29 +117,29 @@ namespace Blood_Bank_Management
             int userId = Convert.ToInt32(IdLabel.Text);
             int totalPack = (int)PacksNumericBox.Value;
             var currentDate = DateTime.Now;
-            int bloodGroupId = bloodGroups.IndexOf(BloodGroup.Text);
+            int bloodGroupId = _bloodGroups.IndexOf(BloodGroup.Text);
 
-            if (bankController.CanReciptBlood(totalPack, bloodGroupId))
+            if (_bankController.CanReciptBlood(totalPack, bloodGroupId))
             {
-                if (recipitionController.InsertRecipitionToDb(userId, totalPack, currentDate))
+                if (_recipitionController.InsertRecipitionToDb(userId, totalPack, currentDate))
                 {
-                    if (userController.UpdateLastRecipientDate(userId, currentDate))
+                    if (_userController.UpdateLastRecipientDate(userId, currentDate))
                     {
-                        MessageBox.Show("Done");
+                        MessageBox.Show(@"Done");
                     }
                     else
                     {
-                        MessageBox.Show("Something wrong to update");
+                        MessageBox.Show(@"Something wrong to update");
                     }
                 }
                 else
                 {
-                    MessageBox.Show("Recipiention is not possible");
+                    MessageBox.Show(@"Recipiention is not possible");
                 }
             }
             else
             {
-                MessageBox.Show("Not enough stroage avilable!!");
+                MessageBox.Show(@"Not enough stroage avilable!!");
             }
         }
     }

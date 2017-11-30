@@ -6,13 +6,13 @@ namespace Blood_Bank_Management
 {
     public partial class UserRegistration : Form
     {
-        private UserController userController;
-        private BankController bankController;
+        private readonly UserController _userController;
+        private readonly BankController _bankController;
         public UserRegistration()
         {
             InitializeComponent();
-            userController = new UserController();
-            bankController = new BankController();
+            _userController = new UserController();
+            _bankController = new BankController();
         }
 
         private void UserRegistration_Load(object sender, EventArgs e)
@@ -22,7 +22,7 @@ namespace Blood_Bank_Management
 
         private void PopulateBloodGroup()
         {
-            List<String> bloodGroups = bankController.GetBloodGroups();
+            List<String> bloodGroups = _bankController.GetBloodGroups();
             
             foreach (String bloodGroup in bloodGroups)
             {
@@ -41,21 +41,30 @@ namespace Blood_Bank_Management
             string mobileNumber = userMobileNumber.Text;
             string address = userAddress.Text;
 
-            if (userController.ValidateRegistrationData(userName, dob, weight, mobileNumber, address))
+            if (_userController.ValidateRegistrationData(userName, dob, weight, mobileNumber, address))
             {
-                if (userController.InsertDonorToDb(userName, dob, bloodGroup, weight, mobileNumber, address))
+                if (_userController.InsertDonorToDb(userName, dob, bloodGroup, weight, mobileNumber, address))
                 {
                     CleanTextFields();
-                    MessageBox.Show("Donor successfully add!", "Success");
+                    MessageBox.Show(@"Name should not be empty
+Weight should be >= 40
+Mobile Number should be all numeric
+Address should not empty!", @"Success");
                 }
                 else
                 {
-                    MessageBox.Show("Something went wrong!", "Failed");
+                    MessageBox.Show(@"Name should not be empty
+Weight should be >= 40
+Mobile Number should be all numeric
+Address should not empty!", @"Failed");
                 }
             }
             else
             {
-                MessageBox.Show("Name should not be empty\nWeight should be >= 40\nMobile Number should be all numeric\nAddress should not empty!", "Error");
+                MessageBox.Show(@"Name should not be empty
+Weight should be >= 40
+Mobile Number should be all numeric
+Address should not empty!", @"Error");
             }
         }
 
@@ -71,7 +80,7 @@ namespace Blood_Bank_Management
 
         private void RegistrationCancelButton_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Close();
         }
     }
 }

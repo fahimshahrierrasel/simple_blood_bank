@@ -6,16 +6,16 @@ namespace Blood_Bank_Management
 {
     public partial class RecipientLogForm : Form
     {
-        private RecipitionController recipitionController;
+        private readonly RecipitionController _recipitionController;
         public RecipientLogForm()
         {
             InitializeComponent();
-            recipitionController = new RecipitionController();
+            _recipitionController = new RecipitionController();
         }
 
         private void RecipientLogForm_Load(object sender, EventArgs e)
         {
-            RecipientDataGridView.DataSource = recipitionController.GetRecipientInformation();
+            RecipientDataGridView.DataSource = _recipitionController.GetRecipientInformation();
         }
 
         private void SearchTextBox_TextChanged(object sender, EventArgs e)

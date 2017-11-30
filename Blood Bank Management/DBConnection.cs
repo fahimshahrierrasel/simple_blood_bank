@@ -4,9 +4,9 @@ namespace Blood_Bank_Management
 {
     class DbConnection
     {
-        private string ConnString = @"Server=WINDOWSPROGRAMM\SQLEXPRESS; Database=BloodBank; Trusted_Connection=True;";
-        private SqlConnection connection;
-        private SqlCommand command;
+        private const string ConnString = @"Server=WINDOWSPROGRAMM\SQLEXPRESS; Database=BloodBank; Trusted_Connection=True;";
+        private readonly SqlConnection connection;
+        private readonly SqlCommand command;
 
         public SqlConnection Connection
         {

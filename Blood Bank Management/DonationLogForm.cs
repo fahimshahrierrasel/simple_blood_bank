@@ -6,16 +6,16 @@ namespace Blood_Bank_Management
 {
     public partial class DonationLogForm : Form
     {
-        private DonationController donationController;
+        private readonly DonationController _donationController;
         public DonationLogForm()
         {
             InitializeComponent();
-            donationController = new DonationController();
+            _donationController = new DonationController();
         }
 
         private void DonationLogForm_Load(object sender, EventArgs e)
         {
-            DonationDataGridView.DataSource = donationController.GetDonationInformation();
+            DonationDataGridView.DataSource = _donationController.GetDonationInformation();
         }
 
         private void SearchTextBox_TextChanged(object sender, EventArgs e)
