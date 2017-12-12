@@ -13,7 +13,7 @@ namespace Blood_Bank_Management.Tests
         {
             // arrange
             var donationToday = DateTime.Today;
-            var donationOtherDay = DateTime.Parse("21/02/2018");
+            var donationOtherDay = DateTime.Parse("21/05/2018");
             // act
             var totalDifference = donatationController.DiferenceBetweenLastDonation(donationOtherDay.ToString("d"));
             // assert

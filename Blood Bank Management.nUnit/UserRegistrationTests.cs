@@ -19,6 +19,30 @@ namespace Blood_Bank_Management.nUnit
         }
 
         [TestCase]
+        public void StringCorrectTest()
+        {
+            // arrange
+            var userController = new UserController();
+            var aString = "String";
+            // act
+            var isString = userController.StringHasSomeValue(aString);
+            // assert
+            Assert.AreEqual(true, isString);
+        }
+
+        [TestCase]
+        public void MobileNumberCorrectTest()
+        {
+            // arrange
+            var userController = new UserController();
+            var mobileNumber = "01554070646";
+            // act
+            var isMobileNumber = userController.IsMobileNumber(mobileNumber);
+            // assert
+            Assert.AreEqual(true, isMobileNumber);
+        }
+
+        [TestCase]
         public void ValidateRegistrationDataTest()
         {
             // arrange
@@ -28,7 +52,6 @@ namespace Blood_Bank_Management.nUnit
             var weight = 50;
             var mobileNumber = "01554070646";
             var address = "Middle Badda";
-
             // act
             var isValid = userController.ValidateRegistrationData(userName, dob, weight, mobileNumber, address);
             // assert

@@ -118,7 +118,7 @@ namespace Blood_Bank_Management
             return weight >= 50;
         }
 
-        private bool IsMobileNumber(string mobileNumber)
+        public bool IsMobileNumber(string mobileNumber)
         {
             return Regex.IsMatch(mobileNumber, @"^\d+$");
         }
@@ -129,12 +129,21 @@ namespace Blood_Bank_Management
             return ((totalDays / 365) >= 18.0);
         }
 
+        public bool StringHasSomeValue(string str)
+        {
+            if (str.Length > 0)
+            {
+                return true;
+            }
+            return false;
+        }
+
         public bool ValidateRegistrationData(string userName, DateTime dob, int weight, string mobileNumber, string address)
         {
             bool validate;
             
             // Checking if User Name is empty
-            validate = userName.Length > 0;
+            validate = StringHasSomeValue(userName);
             
             // Checking if User is under weight
             validate = HasEnoughWeight(weight);
@@ -143,7 +152,7 @@ namespace Blood_Bank_Management
             validate = IsMobileNumber(mobileNumber);
             
             // Checking if user adress is empty
-            validate = address.Length > 0;
+            validate = StringHasSomeValue(address);
 
             validate = HasEnoughAgeToDonate(dob);
             

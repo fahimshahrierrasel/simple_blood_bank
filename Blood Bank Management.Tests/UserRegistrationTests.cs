@@ -19,13 +19,13 @@ namespace Blood_Bank_Management.Tests
             Assert.AreEqual(true, hasAge);
         }
 
-        [TestMethod()]
+        [TestMethod]
         public void ValidateRegistrationDataTest()
         {
             // arrange
             var userController = new UserController();
             var userName = "Fahim Shahrier Rasel";
-            var dob = DateTime.Now;
+            var dob = new DateTime(1990, 1, 1);
             var weight = 50;
             var mobileNumber = "01554070646";
             var address = "Middle Badda";
