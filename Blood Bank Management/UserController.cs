@@ -140,23 +140,30 @@ namespace Blood_Bank_Management
 
         public bool ValidateRegistrationData(string userName, DateTime dob, int weight, string mobileNumber, string address)
         {
-            bool validate;
-            
-            // Checking if User Name is empty
-            validate = StringHasSomeValue(userName);
-            
-            // Checking if User is under weight
-            validate = HasEnoughWeight(weight);
-            
-            // Checking if mobile number is valid. like mobile number is all numeric
-            validate = IsMobileNumber(mobileNumber);
-            
-            // Checking if user adress is empty
-            validate = StringHasSomeValue(address);
 
-            validate = HasEnoughAgeToDonate(dob);
+            try
+            {
+                // Checking if User Name is empty
+                // Checking if User is under weight
+                // Checking if mobile number is valid. like mobile number is all numeric
+                // Checking if user adress is empty
+
+                return StringHasSomeValue(userName) && HasEnoughWeight(weight)
+                       && IsMobileNumber(mobileNumber) && StringHasSomeValue(address)
+                       && HasEnoughAgeToDonate(dob);
+            }
+            catch (NullReferenceException exception)
+            {
+
+                throw exception;
+            }
+            catch (Exception exception)
+            {
+                throw exception;
+            }
             
-            return validate;
+            
+            
         }
     }
 }

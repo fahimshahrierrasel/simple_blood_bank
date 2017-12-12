@@ -43,7 +43,7 @@ namespace Blood_Bank_Management.nUnit
         }
 
         [TestCase]
-        public void ValidateRegistrationDataTest()
+        public void ValidateCorrectRegistrationDataTest()
         {
             // arrange
             var userController = new UserController();
@@ -57,5 +57,21 @@ namespace Blood_Bank_Management.nUnit
             // assert
             Assert.AreEqual(true, isValid);
         }
+        [TestCase]
+        public void ValidateNullNameRegistrationDataTest()
+        {
+            // arrange
+            var userController = new UserController();
+            string userName = null;
+            var dob = new DateTime(1990, 1, 1);
+            var weight = 50;
+            var mobileNumber = "01554070646";
+            var address = "Middle Badda";
+
+            // assert
+            Assert.Throws<NullReferenceException>(() =>
+                userController.ValidateRegistrationData(userName, dob, weight, mobileNumber, address));
+        }
+        
     }
 }
